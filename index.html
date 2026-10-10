@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Hedil Rouatbi, Data Science and AI engineering student seeking a 6-month PFE in Data Engineering.">
+<title>Hedil Rouatbi Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: one long page read like a data pipeline (ingest, transform, serve). A hero with a live flow canvas, then stage-like sections. */
+:root {
+  --bg: #f2f5fa;
+  --surface: #ffffff;
+  --surface-2: #e9eff8;
+  --ink: #0e1a2e;
+  --muted: #55657e;
+  --line: #d6deea;
+  --accent: #1d6fd6;
+  --accent-ink: #ffffff;
+  --sand: #a8690f;
+  --glow: rgba(29, 111, 214, .12);
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #09101f; --surface: #0f1a30; --surface-2: #14223d; --ink: #e8eefb; --muted: #9aa9c5;
+    --line: #213150; --accent: #7cc4ff; --accent-ink: #06101f; --sand: #e8c27a; --glow: rgba(124, 196, 255, .12);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #09101f; --surface: #0f1a30; --surface-2: #14223d; --ink: #e8eefb; --muted: #9aa9c5;
+  --line: #213150; --accent: #7cc4ff; --accent-ink: #06101f; --sand: #e8c27a; --glow: rgba(124, 196, 255, .12);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  padding-inline: 0; -webkit-font-smoothing: antialiased;
+}
+html:not([lang="fr"]) .fr, html[lang="fr"] .en { display: none; }
+a { color: inherit; }
+.wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+
+/* nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; gap: 16px; min-height: 60px; }
+.brand { font-family: var(--font-display); font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.mark { width: 30px; height: 30px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: 13px; font-weight: 800; }
+.links { display: flex; gap: 4px; margin-left: auto; align-items: center; }
+.links a { text-decoration: none; font-size: 14px; color: var(--muted); padding: 8px 10px; border-radius: 8px; transition: color .2s, background .2s; }
+.links a:hover { color: var(--ink); background: var(--surface-2); }
+.ctl { display: flex; gap: 6px; }
+.btn-s { font: 500 12px var(--font-mono); border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 8px; padding: 7px 10px; cursor: pointer; }
+.btn-s:hover { border-color: var(--accent); }
+.btn-s:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* hero */
+.hero { padding-block: 56px 40px; }
+.hero .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; }
+.status { display: inline-flex; align-items: center; gap: 8px; font: 500 12px var(--font-mono); border: 1px solid var(--line); background: var(--surface); padding: 6px 12px; border-radius: 999px; color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #2bb673; box-shadow: 0 0 0 0 rgba(43, 182, 115, .6); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(43, 182, 115, 0); } 100% { box-shadow: 0 0 0 0 rgba(43, 182, 115, 0); } }
+.hero h1 { font-size: clamp(40px, 7vw, 76px); font-weight: 800; margin-top: 20px; }
+.hero h1 .l2 { color: var(--accent); }
+.role { font-size: clamp(17px, 2.2vw, 21px); color: var(--muted); margin-top: 18px; max-width: 34em; }
+.role b { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: 15px; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); transition: transform .2s, border-color .2s; }
+.btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn svg { width: 18px; height: 18px; fill: currentColor; }
+.flow { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px; position: relative; overflow: hidden; }
+.flow canvas { width: 100%; height: 300px; display: block; }
+.flow .cap { font: 400 11px var(--font-mono); color: var(--muted); display: flex; justify-content: space-between; padding: 6px 4px 0; gap: 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.stat b { font: 800 34px var(--font-display); display: block; line-height: 1; }
+.stat span { font-size: 13px; color: var(--muted); }
+
+/* sections */
+section { padding-block: 72px 8px; }
+.sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.sec-head h2 { font-size: clamp(30px, 4.6vw, 46px); font-weight: 700; }
+.sec-head p { color: var(--muted); max-width: 42em; }
+
+.about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; }
+.about .txt p + p { margin-top: 14px; }
+.facts { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: grid; gap: 14px; align-content: start; }
+.fact { display: grid; gap: 2px; }
+.fact small { font: 400 11px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.fact span { font-weight: 500; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; transition: transform .25s, border-color .25s, box-shadow .25s; }
+.card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 14px 34px -18px var(--glow), 0 0 0 4px var(--glow); }
+.card .tag { font: 500 11px var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sand); }
+.card h3 { font-size: 22px; font-weight: 700; }
+.card p { color: var(--muted); font-size: 15px; }
+.metrics { display: flex; flex-wrap: wrap; gap: 8px; }
+.metric { font: 500 12px var(--font-mono); background: var(--surface-2); border-radius: 8px; padding: 6px 10px; }
+.metric b { color: var(--accent); font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 400 12px var(--font-mono); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--muted); transition: color .2s, border-color .2s; }
+.chip:hover { color: var(--ink); border-color: var(--accent); }
+.card .row { margin-top: auto; display: flex; gap: 14px; flex-wrap: wrap; padding-top: 4px; }
+.card .row a { font-weight: 600; font-size: 14px; text-decoration: none; color: var(--accent); border-bottom: 1px solid transparent; }
+.card .row a:hover { border-color: var(--accent); }
+
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.skill { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; min-width: 0; }
+.skill h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+
+.certs { display: grid; gap: 10px; }
+.cert { display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; transition: border-color .25s; }
+.cert:hover { border-color: var(--accent); }
+.cert h3 { font-size: 17px; font-weight: 600; font-family: var(--font-body); }
+.cert p { grid-column: 1; font-size: 14px; color: var(--muted); }
+.cert .meta { grid-column: 2; grid-row: 1 / span 2; text-align: right; font: 400 12px var(--font-mono); color: var(--muted); display: grid; gap: 6px; justify-items: end; }
+.cert .meta a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+.tl { display: grid; gap: 0; position: relative; }
+.tl::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.ev { display: grid; grid-template-columns: 16px 1fr; gap: 20px; padding-bottom: 26px; position: relative; }
+.ev::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); margin-top: 5px; z-index: 1; }
+.ev h3 { font: 600 17px var(--font-body); }
+.ev .when { font: 400 12px var(--font-mono); color: var(--muted); margin-top: 2px; }
+.ev ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+.ev li + li { margin-top: 3px; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.sub { font: 500 12px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: clamp(24px, 5vw, 48px); display: grid; gap: 22px; }
+.contact h2 { font-size: clamp(30px, 5vw, 50px); font-weight: 800; }
+.contact p { color: var(--muted); max-width: 40em; }
+.mail { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; font: 500 15px var(--font-mono); }
+.mail code { background: var(--surface-2); padding: 8px 12px; border-radius: 8px; user-select: all; overflow-wrap: anywhere; }
+footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--font-mono); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+/* reveal: elements stay visible unless script marks them as pending below the fold */
+.pre { opacity: 0; transform: translateY(16px); }
+.reveal { transition: opacity .6s ease, transform .6s ease; }
+
+@media (max-width: 900px) {
+  .hero .hero-grid, .about, .two { grid-template-columns: minmax(0, 1fr); }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .skills { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .links a.hide-m { display: none; }
+}
+@media (max-width: 560px) {
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .links { display: none; }
+  .nav .ctl { margin-left: auto; }
+  .cert { grid-template-columns: minmax(0, 1fr); }
+  .cert .meta { grid-column: 1; grid-row: auto; text-align: left; justify-items: start; display: flex; gap: 14px; flex-wrap: wrap; }
+  .flow canvas { height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot { animation: none; }
+  .reveal, .card, .btn { transition: none; }
+  .pre { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark">HR</span><span>Hedil Rouatbi</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about"><span class="en">About</span><span class="fr">À propos</span></a>
+      <a href="#projects"><span class="en">Projects</span><span class="fr">Projets</span></a>
+      <a href="#skills"><span class="en">Skills</span><span class="fr">Compétences</span></a>
+      <a href="#certs" class="hide-m"><span class="en">Certifications</span><span class="fr">Certifications</span></a>
+      <a href="#experience" class="hide-m"><span class="en">Experience</span><span class="fr">Parcours</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="fr">Contact</span></a>
+    </nav>
+    <div class="ctl">
+      <button class="btn-s" id="lang" type="button" aria-label="Change language">FR</button>
+      <button class="btn-s" id="theme" type="button" aria-label="Toggle theme"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" style="display:block"><circle cx="7" cy="7" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 1.5a5.5 5.5 0 0 1 0 11z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="status"><i class="dot"></i><span class="en">Available for a 6-month PFE</span><span class="fr">Disponible pour un PFE de 6 mois</span></span>
+        <h1>Hedil<br><span class="l2">Rouatbi</span></h1>
+        <p class="role">
+          <span class="en"><b>Data Science &amp; AI engineering student</b> in my final year, looking for an end-of-studies internship in <b>Data Engineering</b>.</span>
+          <span class="fr"><b>Étudiante ingénieure en Data Science &amp; IA</b> en dernière année, à la recherche d'un stage de fin d'études en <b>Data Engineering</b>.</span>
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/hedil1" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/rouatbi-hedil/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+          <a class="btn" href="#contact"><span class="en">Get in touch</span><span class="fr">Me contacter</span></a>
+        </div>
+      </div>
+      <div class="flow" aria-hidden="true">
+        <canvas id="flow"></canvas>
+        <div class="cap"><span>raw data</span><span>pipeline</span><span>insight</span></div>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:40px">
+      <div class="stats">
+        <div class="stat"><b>6</b><span><span class="en">certifications (IBM, PMI)</span><span class="fr">certifications (IBM, PMI)</span></span></div>
+        <div class="stat"><b>4</b><span><span class="en">machine learning &amp; software projects</span><span class="fr">projets ML &amp; logiciels</span></span></div>
+        <div class="stat"><b>6</b><span><span class="en">internships since 2021</span><span class="fr">stages depuis 2021</span></span></div>
+        <div class="stat"><b>5<sup style="font-size:.5em">th</sup></b><span><span class="en">year of engineering studies</span><span class="fr">année en cycle ingénieur</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="en">About</span><span class="fr">À propos</span></span>
+        <h2><span class="en">From mathematics to data pipelines.</span><span class="fr">Des mathématiques aux pipelines de données.</span></h2>
+      </div>
+      <div class="about reveal">
+        <div class="txt">
+          <p>
+            <span class="en">I am a fifth-year engineering student in Data Science &amp; Artificial Intelligence at the École Polytechnique de Sousse, with a bachelor's degree in applied mathematics and computer science.</span>
+            <span class="fr">Je suis étudiante en 5<sup>e</sup> année du cycle ingénieur Data Science &amp; Intelligence Artificielle à l'École Polytechnique de Sousse, titulaire d'une licence en mathématiques appliquées à l'informatique.</span>
+          </p>
+          <p>
+            <span class="en">This year I completed IBM certifications in ETL with Airflow and Kafka, SQL, Apache Spark, BI dashboards and Python, and I build end-to-end projects: from a business question to a deployed Streamlit app. I am now looking for a 6-month PFE in Data Engineering.</span>
+            <span class="fr">Cette année, j'ai validé des certifications IBM en ETL avec Airflow et Kafka, SQL, Apache Spark, tableaux de bord BI et Python, et je réalise des projets de bout en bout : de la question métier jusqu'à une application Streamlit déployée. Je recherche aujourd'hui un PFE de 6 mois en Data Engineering.</span>
+          </p>
+        </div>
+        <div class="facts">
+          <div class="fact"><small><span class="en">Location</span><span class="fr">Localisation</span></small><span>Sousse, Tunisia</span></div>
+          <div class="fact"><small><span class="en">Studying</span><span class="fr">Formation</span></small><span><span class="en">Engineering cycle, Data Science &amp; AI</span><span class="fr">Cycle ingénieur, Data Science &amp; IA</span></span></div>
+          <div class="fact"><small><span class="en">Looking for</span><span class="fr">Recherche</span></small><span><span class="en">6-month PFE, Data Engineering</span><span class="fr">PFE de 6 mois, Data Engineering</span></span></div>
+          <div class="fact"><small><span class="en">Languages</span><span class="fr">Langues</span></small><span><span class="en">Arabic, French, English, Spanish (basic)</span><span class="fr">Arabe, français, anglais, espagnol (élémentaire)</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="en">Projects</span><span class="fr">Projets</span></span>
+        <h2><span class="en">Things I have built.</span><span class="fr">Ce que j'ai construit.</span></h2>
+        <p><span class="en">Academic projects with their code on GitHub. Metrics come from each project's own evaluation.</span><span class="fr">Projets académiques dont le code est sur GitHub. Les métriques viennent de l'évaluation de chaque projet.</span></p>
+      </div>
+      <div class="grid">
+        <article class="card reveal">
+          <span class="tag"><span class="en">Course project · SOA &amp; microservices</span><span class="fr">Projet de cours · SOA &amp; microservices</span></span>
+          <h3><span class="en">Natural disaster management platform</span><span class="fr">Plateforme de gestion des catastrophes</span></h3>
+          <p>
+            <span class="en">Alert platform for fires, floods and earthquakes. A REST and GraphQL API gateway fronts services connected through gRPC, and Kafka events trigger rescue-team assignment and notifications.</span>
+            <span class="fr">Plateforme d'alertes (incendies, inondations, séismes). Une API Gateway REST et GraphQL expose des services reliés en gRPC, et des événements Kafka déclenchent l'affectation d'une équipe de secours et les notifications.</span>
+          </p>
+          <div class="chips"><span class="chip">Node.js</span><span class="chip">gRPC</span><span class="chip">GraphQL</span><span class="chip">REST</span><span class="chip">Kafka</span><span class="chip">SQLite</span><span class="chip">RxDB</span><span class="chip">Docker Compose</span></div>
+          <div class="row"><a href="https://github.com/hedil1/SOA_gestion-des-catastrophes" target="_blank" rel="noopener">GitHub →</a></div>
+        </article>
+
+        <article class="card reveal">
+          <span class="tag"><span class="en">Machine learning · EdTech</span><span class="fr">Machine learning · EdTech</span></span>
+          <h3>EduRisk AI</h3>
+          <p>
+            <span class="en">Predicts which students are likely to drop out of an online learning platform, following the CRISP-DM process: business problem, engagement indicators, four models compared, and a deployed Streamlit app for early intervention.</span>
+            <span class="fr">Prédit les étudiants à risque d'abandon sur une plateforme d'apprentissage en ligne, selon la démarche CRISP-DM : problème métier, indicateurs d'engagement, quatre modèles comparés et application Streamlit déployée pour une intervention précoce.</span>
+          </p>
+          <div class="metrics"><span class="metric">Random Forest · <b>98.1%</b> accuracy</span><span class="metric">F1 <b>0.981</b></span></div>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">XGBoost</span><span class="chip">ANN</span><span class="chip">KNN</span><span class="chip">Streamlit</span></div>
+          <div class="row"><a href="https://github.com/hedil1/edurisk-ai" target="_blank" rel="noopener">GitHub →</a><a href="https://edurisk-ai-gkldtcr56ipgewvk4xicro.streamlit.app/" target="_blank" rel="noopener"><span class="en">Live app →</span><span class="fr">Application →</span></a></div>
+        </article>
+
+        <article class="card reveal">
+          <span class="tag"><span class="en">Machine learning · Transport</span><span class="fr">Machine learning · Transport</span></span>
+          <h3><span class="en">Level-crossing danger prediction</span><span class="fr">Dangerosité des passages à niveau</span></h3>
+          <p>
+            <span class="en">Binary classification on SNCFT accident data. Five models compared with 5-fold cross-validation, and a Streamlit app with real-time prediction and an interactive map.</span>
+            <span class="fr">Classification binaire sur des données d'accidents de la SNCFT. Cinq modèles comparés avec validation croisée à 5 folds, et application Streamlit avec prédiction en temps réel et carte interactive.</span>
+          </p>
+          <div class="metrics"><span class="metric">5-fold CV · <b>~88.6%</b> mean accuracy</span></div>
+          <div class="chips"><span class="chip">Random Forest</span><span class="chip">XGBoost</span><span class="chip">Gradient Boosting</span><span class="chip">SVM</span><span class="chip">KNN</span><span class="chip">Streamlit</span></div>
+          <div class="row"><a href="https://github.com/hedil1/ML-Project" target="_blank" rel="noopener">GitHub →</a></div>
+        </article>
+
+        <article class="card reveal">
+          <span class="tag"><span class="en">Deep learning · Medical imaging</span><span class="fr">Deep learning · Imagerie médicale</span></span>
+          <h3><span class="en">Endometriosis detection</span><span class="fr">Détection de l'endométriose</span></h3>
+          <p>
+            <span class="en">Classification of 1,022 laparoscopic images with data augmentation. VGG16 transfer learning performed best against a custom CNN and ResNet50, with Grad-CAM to show what the model looks at.</span>
+            <span class="fr">Classification de 1 022 images laparoscopiques avec augmentation de données. Le transfer learning VGG16 a surpassé un CNN et ResNet50, avec Grad-CAM pour visualiser les zones utilisées par le modèle.</span>
+          </p>
+          <div class="metrics"><span class="metric">VGG16 · <b>92.9%</b> test accuracy</span></div>
+          <div class="chips"><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">VGG16</span><span class="chip">ResNet50</span><span class="chip">Grad-CAM</span><span class="chip">Streamlit</span></div>
+          <div class="row"><a href="https://github.com/hedil1/deep_learning_project" target="_blank" rel="noopener">GitHub →</a></div>
+        </article>
+      </div>
+      <p class="reveal" style="margin-top:22px;color:var(--muted);font-size:15px">
+        <span class="en">More repositories on <a href="https://github.com/hedil1" target="_blank" rel="noopener" style="color:var(--accent)">github.com/hedil1</a>.</span>
+        <span class="fr">Plus de dépôts sur <a href="https://github.com/hedil1" target="_blank" rel="noopener" style="color:var(--accent)">github.com/hedil1</a>.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="en">Skills</span><span class="fr">Compétences</span></span>
+        <h2><span class="en">The toolbox.</span><span class="fr">La boîte à outils.</span></h2>
+      </div>
+      <div class="skills">
+        <div class="skill reveal"><h3>Data Engineering</h3><div class="chips"><span class="chip">ETL</span><span class="chip">Shell scripting</span><span class="chip">Apache Airflow</span><span class="chip">Apache Kafka</span><span class="chip">Apache Spark</span><span class="chip">SparkML</span><span class="chip">GraphFrames</span></div></div>
+        <div class="skill reveal"><h3>Data Science &amp; AI</h3><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">Google Colab</span></div></div>
+        <div class="skill reveal"><h3><span class="en">Methodologies</span><span class="fr">Méthodologies</span></h3><div class="chips"><span class="chip">Agile / Scrum</span><span class="chip">CRISP-DM</span><span class="chip"><span class="en">Project management</span><span class="fr">Gestion de projet</span></span></div></div>
+        <div class="skill reveal"><h3><span class="en">Architecture &amp; back-end</span><span class="fr">Architecture &amp; back-end</span></h3><div class="chips"><span class="chip">Microservices</span><span class="chip">gRPC</span><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">Node.js</span><span class="chip">Docker</span></div></div>
+        <div class="skill reveal"><h3><span class="en">Databases &amp; BI</span><span class="fr">Bases de données &amp; BI</span></h3><div class="chips"><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">NoSQL</span><span class="chip">IBM Cognos Analytics</span><span class="chip">Google Looker</span><span class="chip">Streamlit</span></div></div>
+        <div class="skill reveal"><h3><span class="en">Web &amp; tools</span><span class="fr">Web &amp; outils</span></h3><div class="chips"><span class="chip">React.js</span><span class="chip">Tailwind CSS</span><span class="chip">PHP</span><span class="chip">Symfony</span><span class="chip">Django</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Figma</span><span class="chip">UML</span><span class="chip">Odoo</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Certifications</span>
+        <h2><span class="en">Verified learning.</span><span class="fr">Des acquis vérifiables.</span></h2>
+        <p><span class="en">IBM courses on Coursera, each with a public verification link.</span><span class="fr">Cours IBM sur Coursera, chacun avec un lien de vérification public.</span></p>
+      </div>
+      <div class="certs">
+        <div class="cert reveal"><h3>ETL and Data Pipelines with Shell, Airflow and Kafka</h3><p><span class="en">ETL pipelines, orchestration with Airflow, data streams with Kafka.</span><span class="fr">Pipelines ETL, orchestration avec Airflow, flux de données avec Kafka.</span></p><div class="meta"><span>IBM · Coursera · <span class="en">Aug 2026</span><span class="fr">Août 2026</span></span><a href="https://coursera.org/verify/9XPJ02IRADLB" target="_blank" rel="noopener"><span class="en">Verify →</span><span class="fr">Vérifier →</span></a></div></div>
+        <div class="cert reveal"><h3>Databases and SQL for Data Science with Python</h3><p><span class="en">Relational databases, SQL queries, integration with Python.</span><span class="fr">Bases de données relationnelles, requêtes SQL, intégration avec Python.</span></p><div class="meta"><span>IBM · Coursera · <span class="en">Aug 2026</span><span class="fr">Août 2026</span></span><a href="https://coursera.org/verify/341HFEIBJWZ5" target="_blank" rel="noopener"><span class="en">Verify →</span><span class="fr">Vérifier →</span></a></div></div>
+        <div class="cert reveal"><h3>Machine Learning with Apache Spark</h3><p><span class="en">Regression, classification and clustering with SparkML; GraphFrames.</span><span class="fr">Régression, classification et clustering avec SparkML ; GraphFrames.</span></p><div class="meta"><span>IBM · Coursera · <span class="en">Sep 2026</span><span class="fr">Sept. 2026</span></span><a href="https://coursera.org/verify/PWXG59TGHMYI" target="_blank" rel="noopener"><span class="en">Verify →</span><span class="fr">Vérifier →</span></a></div></div>
+        <div class="cert reveal"><h3>BI Dashboards with IBM Cognos Analytics and Google Looker</h3><p><span class="en">Building dashboards and decision-support reports.</span><span class="fr">Création de tableaux de bord et de rapports décisionnels.</span></p><div class="meta"><span>IBM · Coursera · <span class="en">Sep 2026</span><span class="fr">Sept. 2026</span></span><a href="https://coursera.org/verify/SF7D1T4E6OH2" target="_blank" rel="noopener"><span class="en">Verify →</span><span class="fr">Vérifier →</span></a></div></div>
+        <div class="cert reveal"><h3>Python for Data Science, AI &amp; Development</h3><p><span class="en">Python for data science and AI.</span><span class="fr">Python pour la data science et l'IA.</span></p><div class="meta"><span>IBM · Coursera · <span class="en">Aug 2026</span><span class="fr">Août 2026</span></span><a href="https://coursera.org/verify/8HR7NS5HTDFS" target="_blank" rel="noopener"><span class="en">Verify →</span><span class="fr">Vérifier →</span></a></div></div>
+        <div class="cert reveal"><h3>PMI Project Management Ready®</h3><p><span class="en">Project management fundamentals, predictive and Agile methodologies, business analysis, risk and scope management.</span><span class="fr">Gestion de projet (méthodologies prédictives et Agile), analyse métier, gestion des risques et du périmètre.</span></p><div class="meta"><span>Certiport &amp; PMI · <span class="en">Jun 2026</span><span class="fr">Juin 2026</span></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow"><span class="en">Experience &amp; education</span><span class="fr">Expérience &amp; formation</span></span>
+        <h2><span class="en">Path so far.</span><span class="fr">Le parcours.</span></h2>
+      </div>
+      <div class="two">
+        <div class="reveal">
+          <div class="sub"><span class="en">Experience</span><span class="fr">Expérience</span></div>
+          <div class="tl">
+            <div class="ev"><div><h3>1FOR1 Learning</h3><div class="when"><span class="en">Paid internship · Oct 2025 – present</span><span class="fr">Stage rémunéré · Oct. 2025 – à ce jour</span></div><ul><li><span class="en">Customer support and assistance for platform users</span><span class="fr">Support client et assistance aux utilisateurs</span></li><li><span class="en">Analysis of learner behavior and usage, ongoing engagement tracking</span><span class="fr">Analyse des comportements et des usages, suivi de l'engagement</span></li></ul></div></div>
+            <div class="ev"><div><h3>1FOR1 Learning</h3><div class="when"><span class="en">Summer internship · 2024–2025</span><span class="fr">Stage d'été · 2024–2025</span></div><ul><li><span class="en">Social media KPI analysis to improve visibility and commercial performance</span><span class="fr">Analyse des KPI des réseaux sociaux pour la visibilité et la performance commerciale</span></li></ul></div></div>
+            <div class="ev"><div><h3>Timelapse</h3><div class="when"><span class="en">Volunteer internship · 2023–2024</span><span class="fr">Stage volontaire · 2023–2024</span></div><ul><li><span class="en">Planning, coordination and follow-up of Odoo projects</span><span class="fr">Planification, coordination et suivi de projets Odoo</span></li></ul></div></div>
+            <div class="ev"><div><h3>Leymax Technologies</h3><div class="when"><span class="en">Summer internship · 2022–2023</span><span class="fr">Stage d'été · 2022–2023</span></div><ul><li><span class="en">Dynamic, responsive website with Tailwind CSS and React.js</span><span class="fr">Site web dynamique et réactif avec Tailwind CSS et React.js</span></li></ul></div></div>
+            <div class="ev"><div><h3>Webspirit</h3><div class="when"><span class="en">Bachelor's final internship · 2022–2023</span><span class="fr">Stage de fin d'études de licence · 2022–2023</span></div><ul><li><span class="en">SEO ranking tracker using the Google Search Console API</span><span class="fr">Site de suivi du classement SEO avec l'API Google Search Console</span></li></ul></div></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="sub"><span class="en">Education</span><span class="fr">Formation</span></div>
+          <div class="tl">
+            <div class="ev"><div><h3><span class="en">5th year · Data Science &amp; AI</span><span class="fr">5<sup>e</sup> année · Data Science &amp; IA</span></h3><div class="when">École Polytechnique de Sousse · 2026–2027</div></div></div>
+            <div class="ev"><div><h3><span class="en">4th year · Data Science &amp; AI</span><span class="fr">4<sup>e</sup> année · Data Science &amp; IA</span></h3><div class="when">École Polytechnique de Sousse · 2025–2026</div></div></div>
+            <div class="ev"><div><h3><span class="en">3rd year · Engineering cycle</span><span class="fr">3<sup>e</sup> année · Cycle ingénieur</span></h3><div class="when">École Polytechnique de Sousse · 2024–2025</div></div></div>
+            <div class="ev"><div><h3><span class="en">Bachelor's in applied mathematics and computer science</span><span class="fr">Licence en mathématiques appliquées à l'informatique</span></h3><div class="when">ESSTHS · 2020–2024</div></div></div>
+            <div class="ev"><div><h3><span class="en">Baccalaureate in mathematics</span><span class="fr">Baccalauréat en mathématiques</span></h3><div class="when">Lycée Romania, Kalaa Sghira · 2019–2020</div></div></div>
+          </div>
+          <div class="sub" style="margin-top:12px"><span class="en">Community</span><span class="fr">Engagement associatif</span></div>
+          <div class="tl">
+            <div class="ev"><div><h3>Club Microsoft ESSTHS</h3><div class="when">2021–2023</div><ul><li><span class="en">Treasury and sponsoring lead, human resources lead, and Digital Accessibility league lead (organized the Game Tastic and Scratch and UI/UX events)</span><span class="fr">Responsable trésorerie et sponsoring, ressources humaines et League Digital Accessibility (organisation de Game Tastic et Scratch and UI/UX)</span></li></ul></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact reveal">
+        <span class="eyebrow"><span class="en">Contact</span><span class="fr">Contact</span></span>
+        <h2><span class="en">Let's talk about a Data Engineering PFE.</span><span class="fr">Parlons d'un PFE en Data Engineering.</span></h2>
+        <p><span class="en">I am available for a 6-month end-of-studies internship. The fastest way to reach me is LinkedIn or email.</span><span class="fr">Je suis disponible pour un stage de fin d'études de 6 mois. Le plus rapide est de me contacter sur LinkedIn ou par e-mail.</span></p>
+        <div class="mail"><code id="mailtxt">hedilrouatbi23@gmail.com</code><button class="btn-s" id="copy" type="button"><span class="en">Copy</span><span class="fr">Copier</span></button></div>
+        <div class="cta" style="margin-top:0">
+          <a class="btn primary" href="https://www.linkedin.com/in/rouatbi-hedil/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/hedil1" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="mailto:hedilrouatbi23@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Hedil Rouatbi</span>
+  <span>Sousse, Tunisia</span>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  // language
+  var lang = get('hr-lang') || 'en';
+  function applyLang() {
+    root.setAttribute('lang', lang);
+    document.getElementById('lang').textContent = lang === 'fr' ? 'EN' : 'FR';
+  }
+  applyLang();
+  document.getElementById('lang').addEventListener('click', function () {
+    lang = lang === 'fr' ? 'en' : 'fr'; set('hr-lang', lang); applyLang();
+  });
+
+  // theme
+  var saved = get('hr-theme');
+  if (saved) root.setAttribute('data-theme', saved);
+  document.getElementById('theme').addEventListener('click', function () {
+    var cur = root.getAttribute('data-theme');
+    if (!cur) cur = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next); set('hr-theme', next);
+  });
+
+  // copy email
+  document.getElementById('copy').addEventListener('click', function () {
+    var el = document.getElementById('mailtxt');
+    var txt = el.textContent;
+    function sel() { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    try { navigator.clipboard.writeText(txt).catch(sel); } catch (e) { sel(); }
+    this.style.borderColor = 'var(--accent)';
+  });
+
+  // reveal on scroll: only elements below the fold start hidden
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window && !reduce) {
+    var vh = window.innerHeight;
+    els.forEach(function (el) {
+      if (el.getBoundingClientRect().top > vh) el.classList.add('pre');
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // hero flow canvas: raw data (sand) passes three stages and leaves as clean data (accent)
+  var cv = document.getElementById('flow');
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, dpr = 1, parts = [], running = true, last = 0;
+  var lanes = 7;
+  function css(n) { return getComputedStyle(root).getPropertyValue(n).trim(); }
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function laneY(i) { return 28 + (H - 56) * (i / (lanes - 1)); }
+  function spawn(initial) {
+    return { lane: Math.floor(Math.random() * lanes), x: initial ? Math.random() * W : -10, v: 40 + Math.random() * 50, r: 2 + Math.random() * 1.6 };
+  }
+  function init() { size(); parts = []; for (var i = 0; i < 46; i++) parts.push(spawn(true)); }
+  var stages = [0.30, 0.52, 0.74];
+  function draw(dt) {
+    var accent = css('--accent'), sand = css('--sand'), line = css('--line'), muted = css('--muted');
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineWidth = 1; ctx.strokeStyle = line;
+    for (var i = 0; i < lanes; i++) { ctx.beginPath(); ctx.moveTo(0, laneY(i)); ctx.lineTo(W, laneY(i)); ctx.stroke(); }
+    ctx.font = '500 10px "IBM Plex Mono", monospace'; ctx.textAlign = 'center';
+    var names = ['ingest', 'transform', 'serve'];
+    stages.forEach(function (s, k) {
+      var x = W * s;
+      ctx.fillStyle = line; ctx.fillRect(x - 1, 12, 2, H - 24);
+      ctx.fillStyle = muted; ctx.fillText(names[k], x, 10);
+    });
+    parts.forEach(function (p) {
+      p.x += p.v * dt;
+      if (p.x > W + 10) { var n = spawn(false); p.lane = n.lane; p.x = n.x; p.v = n.v; p.r = n.r; }
+      var f = p.x / W;
+      var y = laneY(p.lane);
+      // after the transform stage particles merge toward the center lanes
+      var cy = H / 2;
+      if (f > stages[1]) { var t = Math.min(1, (f - stages[1]) / 0.2); y = y + (cy - y) * t * 0.55; }
+      ctx.fillStyle = f < stages[1] ? sand : accent;
+      ctx.globalAlpha = f < 0.04 ? f * 20 : 1;
+      ctx.beginPath(); ctx.arc(p.x, y, f < stages[1] ? p.r : p.r + 0.4, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+  }
+  function frame(ts) {
+    if (!running) return;
+    var dt = Math.min(0.05, (ts - last) / 1000 || 0.016); last = ts;
+    draw(dt); requestAnimationFrame(frame);
+  }
+  init();
+  window.addEventListener('resize', function () { size(); });
+  if (reduce) { draw(0); }
+  else {
+    requestAnimationFrame(frame);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) {
+        var vis = e[0].isIntersecting;
+        if (vis && !running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
+        else if (!vis) running = false;
+      }).observe(cv);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
