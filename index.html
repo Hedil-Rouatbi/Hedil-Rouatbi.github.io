@@ -147,7 +147,7 @@ section { padding-block: 72px 8px; }
 .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: clamp(24px, 5vw, 48px); display: grid; gap: 22px; }
 .contact h2 { font-size: clamp(30px, 5vw, 50px); font-weight: 800; }
 .contact p { color: var(--muted); max-width: 40em; }
-.mail { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; font: 500 15px var(--font-mono); }
+.mail { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font: 500 15px var(--font-mono); }
 .mail code { background: var(--surface-2); padding: 8px 12px; border-radius: 8px; user-select: all; overflow-wrap: anywhere; }
 footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--font-mono); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
@@ -208,7 +208,7 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
           <span class="fr"><b>Étudiante ingénieure en Data Science &amp; IA</b> en dernière année, à la recherche d'un stage de fin d'études en <b>Data Engineering</b>.</span>
         </p>
         <div class="cta">
-          <a class="btn primary" href="https://github.com/hedil1" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+          <a class="btn primary" href="https://github.com/Hedil-Rouatbi" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/rouatbi-hedil/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
           <a class="btn" href="#contact"><span class="en">Get in touch</span><span class="fr">Me contacter</span></a>
         </div>
@@ -271,7 +271,7 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
             <span class="fr">Plateforme d'alertes (incendies, inondations, séismes). Une API Gateway REST et GraphQL expose des services reliés en gRPC, et des événements Kafka déclenchent l'affectation d'une équipe de secours et les notifications.</span>
           </p>
           <div class="chips"><span class="chip">Node.js</span><span class="chip">gRPC</span><span class="chip">GraphQL</span><span class="chip">REST</span><span class="chip">Kafka</span><span class="chip">SQLite</span><span class="chip">RxDB</span><span class="chip">Docker Compose</span></div>
-          <div class="row"><a href="https://github.com/hedil1/SOA_gestion-des-catastrophes" target="_blank" rel="noopener">GitHub →</a></div>
+          <div class="row"><a href="https://github.com/Hedil-Rouatbi/SOA_gestion-des-catastrophes" target="_blank" rel="noopener">GitHub →</a></div>
         </article>
 
         <article class="card reveal">
@@ -283,7 +283,7 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
           </p>
           <div class="metrics"><span class="metric">Random Forest · <b>98.1%</b> accuracy</span><span class="metric">F1 <b>0.981</b></span></div>
           <div class="chips"><span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">XGBoost</span><span class="chip">ANN</span><span class="chip">KNN</span><span class="chip">Streamlit</span></div>
-          <div class="row"><a href="https://github.com/hedil1/edurisk-ai" target="_blank" rel="noopener">GitHub →</a><a href="https://edurisk-ai-gkldtcr56ipgewvk4xicro.streamlit.app/" target="_blank" rel="noopener"><span class="en">Live app →</span><span class="fr">Application →</span></a></div>
+          <div class="row"><a href="https://github.com/Hedil-Rouatbi/edurisk-ai" target="_blank" rel="noopener">GitHub →</a><a href="https://edurisk-ai-gkldtcr56ipgewvk4xicro.streamlit.app/" target="_blank" rel="noopener"><span class="en">Live app →</span><span class="fr">Application →</span></a></div>
         </article>
 
         <article class="card reveal">
@@ -295,7 +295,7 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
           </p>
           <div class="metrics"><span class="metric">5-fold CV · <b>~88.6%</b> mean accuracy</span></div>
           <div class="chips"><span class="chip">Random Forest</span><span class="chip">XGBoost</span><span class="chip">Gradient Boosting</span><span class="chip">SVM</span><span class="chip">KNN</span><span class="chip">Streamlit</span></div>
-          <div class="row"><a href="https://github.com/hedil1/ML-Project" target="_blank" rel="noopener">GitHub →</a></div>
+          <div class="row"><a href="https://github.com/Hedil-Rouatbi/ML-Project" target="_blank" rel="noopener">GitHub →</a></div>
         </article>
 
         <article class="card reveal">
@@ -307,12 +307,12 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
           </p>
           <div class="metrics"><span class="metric">VGG16 · <b>92.9%</b> test accuracy</span></div>
           <div class="chips"><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">VGG16</span><span class="chip">ResNet50</span><span class="chip">Grad-CAM</span><span class="chip">Streamlit</span></div>
-          <div class="row"><a href="https://github.com/hedil1/deep_learning_project" target="_blank" rel="noopener">GitHub →</a></div>
+          <div class="row"><a href="https://github.com/Hedil-Rouatbi/deep_learning_project" target="_blank" rel="noopener">GitHub →</a></div>
         </article>
       </div>
       <p class="reveal" style="margin-top:22px;color:var(--muted);font-size:15px">
-        <span class="en">More repositories on <a href="https://github.com/hedil1" target="_blank" rel="noopener" style="color:var(--accent)">github.com/hedil1</a>.</span>
-        <span class="fr">Plus de dépôts sur <a href="https://github.com/hedil1" target="_blank" rel="noopener" style="color:var(--accent)">github.com/hedil1</a>.</span>
+        <span class="en">More repositories on <a href="https://github.com/Hedil-Rouatbi" target="_blank" rel="noopener" style="color:var(--accent)">github.com/Hedil-Rouatbi</a>.</span>
+        <span class="fr">Plus de dépôts sur <a href="https://github.com/Hedil-Rouatbi" target="_blank" rel="noopener" style="color:var(--accent)">github.com/Hedil-Rouatbi</a>.</span>
       </p>
     </div>
   </section>
@@ -394,10 +394,12 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
         <h2><span class="en">Let's talk about a Data Engineering PFE.</span><span class="fr">Parlons d'un PFE en Data Engineering.</span></h2>
         <p><span class="en">I am available for a 6-month end-of-studies internship. The fastest way to reach me is LinkedIn or email.</span><span class="fr">Je suis disponible pour un stage de fin d'études de 6 mois. Le plus rapide est de me contacter sur LinkedIn ou par e-mail.</span></p>
         <div class="mail"><code id="mailtxt">hedilrouatbi23@gmail.com</code><button class="btn-s" id="copy" type="button"><span class="en">Copy</span><span class="fr">Copier</span></button></div>
+        <div class="mail"><code id="phonetxt">+216 58 999 164</code><button class="btn-s" id="copyp" type="button"><span class="en">Copy</span><span class="fr">Copier</span></button><span style="font:400 12px var(--font-mono);color:var(--muted)"><span class="en">Phone and WhatsApp</span><span class="fr">Téléphone et WhatsApp</span></span></div>
         <div class="cta" style="margin-top:0">
           <a class="btn primary" href="https://www.linkedin.com/in/rouatbi-hedil/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://github.com/hedil1" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://github.com/Hedil-Rouatbi" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="mailto:hedilrouatbi23@gmail.com">Email</a>
+          <a class="btn" href="https://wa.me/21658999164" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -436,14 +438,18 @@ footer { padding-block: 40px 56px; color: var(--muted); font: 400 12px var(--fon
     root.setAttribute('data-theme', next); set('hr-theme', next);
   });
 
-  // copy email
-  document.getElementById('copy').addEventListener('click', function () {
-    var el = document.getElementById('mailtxt');
-    var txt = el.textContent;
-    function sel() { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
-    try { navigator.clipboard.writeText(txt).catch(sel); } catch (e) { sel(); }
-    this.style.borderColor = 'var(--accent)';
-  });
+  // copy email / phone
+  function bindCopy(btnId, textId) {
+    document.getElementById(btnId).addEventListener('click', function () {
+      var el = document.getElementById(textId);
+      var txt = el.textContent;
+      function sel() { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+      try { navigator.clipboard.writeText(txt).catch(sel); } catch (e) { sel(); }
+      this.style.borderColor = 'var(--accent)';
+    });
+  }
+  bindCopy('copy', 'mailtxt');
+  bindCopy('copyp', 'phonetxt');
 
   // reveal on scroll: only elements below the fold start hidden
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
